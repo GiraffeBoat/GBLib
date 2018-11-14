@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: e2ab967be8dac8f4da5b86a36827d57d
+timeCreated: 1542043179
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Accidental Presidency
+  fontNames:
+  - Accidental Presidency
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
