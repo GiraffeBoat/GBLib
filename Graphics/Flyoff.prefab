@@ -38,24 +38,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1962418665046466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab417aa77bdb9144faa63ca140b3ea18, type: 3}
+  m_Script: {fileID: 11500000, guid: c2f73baa43ced0145b1c96a5f73f43d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealColor:
-    r: 0.09764271
-    g: 0.9485294
-    b: 0.13872008
-    a: 1
-  HitColor:
-    r: 0.9264706
-    g: 0
-    b: 0
-    a: 1
-  CritColor:
-    r: 1
-    g: 0.93103445
-    b: 0
-    a: 1
+  HealColor: {r: 0, g: 0, b: 0, a: 0}
+  HitColor: {r: 0, g: 0, b: 0, a: 0}
+  CritColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114261998280921624
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,9 +12,13 @@ public class OrthoCameraBounds : BoxBounds {
 	public override float Bottom { get { return myCamera.ScreenToWorldPoint(Vector3.zero).y; } }
 	public override float Right { get { return myCamera.ScreenToWorldPoint((Vector3.right) * myCamera.pixelWidth).x; } }
 
+	void Awake() {
+		myCamera = gameObject.GetComponent<Camera>();
+	}
+
 	// Use this for initialization
 	void Start () {
-		myCamera = gameObject.GetComponent<Camera>();
+		
 	}
 	
 	// Update is called once per frame

@@ -59,9 +59,4 @@ public class AspectRatioControl : MonoBehaviour {
 			camera.rect = rect;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

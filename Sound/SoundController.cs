@@ -13,6 +13,7 @@ public class SoundController : MonoBehaviour {
 
 	private Dictionary<string, AudioSource> sources = new Dictionary<string, AudioSource> ();
 
+	private bool Muted = false;
 
 	// Use this for initialization
 	void Start () {
@@ -42,18 +43,10 @@ public class SoundController : MonoBehaviour {
 		}
 	}
 
-	//DELETE
-	void Update() {
-		if (Input.GetKeyDown(KeyCode.Q)) {
-			PlayClip ("thrust");
-		} else if (Input.GetKeyDown(KeyCode.W)) {
-			PlayClip ("death");
-		} else if (Input.GetKeyDown(KeyCode.E)) {
-			PlayClip ("score");
-		} else if (Input.GetKeyDown(KeyCode.R)) {
-			PlayClip ("blip1");
-		} else if (Input.GetKeyDown(KeyCode.T)) {
-			PlayClip ("blip2");
-		}
+	public void Mute() {
+		Mixer.audioMixer.SetFloat("Volume", -80f);
+	}
+	public void UnMute() {
+		Mixer.audioMixer.SetFloat("Volume", 0f);
 	}
 }
