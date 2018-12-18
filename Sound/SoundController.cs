@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -16,7 +16,7 @@ public class SoundController : MonoBehaviour {
 	private bool Muted = false;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if (Clips.Length != ClipNames.Length) {
 			Debug.LogError ("Missing Audio clip names in SoundController!");
 			return;
@@ -27,10 +27,14 @@ public class SoundController : MonoBehaviour {
 			newSource.clip = Clips[i];
 			newSource.outputAudioMixerGroup = Mixer;
 			sources.Add(ClipNames[i], newSource);
+            //Debug.Log("adding clip " + ClipNames[i]);
 		}
 	}
 
 	public void PlayClip(string clipName) {
+		if (Muted) {
+			return;
+		}
 		if (sources.ContainsKey (clipName)) {
 			AudioSource source = sources [clipName];
 			if (source != null) {
@@ -44,9 +48,11 @@ public class SoundController : MonoBehaviour {
 	}
 
 	public void Mute() {
-		Mixer.audioMixer.SetFloat("Volume", -80f);
+		Muted = true;
+		//Mixer.audioMixer.SetFloat("Volume", -80f);
 	}
 	public void UnMute() {
-		Mixer.audioMixer.SetFloat("Volume", 0f);
+		Muted = false;
+		//Mixer.audioMixer.SetFloat("Volume", 0f);
 	}
 }

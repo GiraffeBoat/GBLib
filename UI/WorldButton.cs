@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,10 @@ namespace GBLib {
 
 		private InputLogic Logic;
 
+		public static bool Belay;
+
+		public System.Action OnClick;
+
 		// Use this for initialization
 		void Start() {
 			Area = this.GetComponentInChildren<BoxCollider2D>();
@@ -29,31 +33,33 @@ namespace GBLib {
 
 		// Update is called once per frame
 		void Update() {
-			if (!Enabled) {
+			if (!Enabled || Belay) {
 				return;
-			}
-
-			if (Input.touchCount > 0) {
-				Touch t = Input.GetTouch(0);
-				if (CheckPoint(t.position)) {
-					Click();
-				}
 			}
 
 			if (Input.GetMouseButtonDown(0)) {
 				if (CheckPoint(Input.mousePosition)) {
 					//Mouse 1 Click
 					Click();
-				}
+                    return;
+                }
 			}
-
 			if (Input.GetMouseButtonDown(1)) {
 				if (CheckPoint(Input.mousePosition)) {
 					//Mouse 2 Click
 					RightClick();
-				}
+                    return;
+                }
 			}
-		}
+
+            if (Input.touchCount > 0) {
+                Touch t = Input.GetTouch(0);
+                if (t.phase == TouchPhase.Began && CheckPoint(t.position)) {
+                    Click();
+                    return;
+                }
+            }
+        }
 
 		private bool CheckPoint(Vector3 pixelCoords) {
 			Vector3 point = Camera.main.ScreenToWorldPoint(pixelCoords);
@@ -68,6 +74,9 @@ namespace GBLib {
 
 		void Click() {
 			Logic.OnPoke();
+			if (OnClick != null) {
+				OnClick();
+			}
 		}
 
 		void RightClick() {

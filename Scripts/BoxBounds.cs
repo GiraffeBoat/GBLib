@@ -18,8 +18,7 @@ public class BoxBounds : MonoBehaviour {
 	public Color GizmoColor = Color.yellow;
 	public bool ShowGizmoAlways = false;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		Width = LowerRight.position.x - UpperLeft.position.x;
 		Height = UpperLeft.position.y - LowerRight.position.y;
 	}

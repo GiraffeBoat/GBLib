@@ -10,8 +10,8 @@ namespace GBLib {
 		public Sprite GetRandomSprite() {
 			if (SpriteChoices == null || SpriteChoices.Count == 0) {
 				Debug.LogError("PossibleSprites has no possible Sprites! Using empty sprite.");
-				return new Sprite();
-			}
+				return null;
+			} 
 			int index = Random.Range(0, SpriteChoices.Count);
 			return SpriteChoices[index];
 		}

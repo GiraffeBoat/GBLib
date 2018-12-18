@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GBLib
 {
@@ -13,6 +13,10 @@ namespace GBLib
 		public EffectStack (object thing)
 		{
 			effect = thing;
+		}
+
+		public object GetEffect() {
+			return effect;
 		}
 
 		public bool AddStack(int count=1) {
