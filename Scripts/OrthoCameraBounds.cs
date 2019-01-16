@@ -6,6 +6,7 @@ using UnityEngine;
 public class OrthoCameraBounds : BoxBounds {
 
 	private Camera myCamera;
+	public Camera Camera { get { return myCamera; } }
 
 	public override float Left {  get { return myCamera.ScreenToWorldPoint(Vector3.zero).x; } }
 	public override float Top { get { return myCamera.ScreenToWorldPoint((Vector3.up) * myCamera.pixelHeight).y; } }

@@ -13,7 +13,7 @@ public class SoundController : MonoBehaviour {
 
 	private Dictionary<string, AudioSource> sources = new Dictionary<string, AudioSource> ();
 
-	private bool Muted = false;
+	public bool IsMuted { get; private set; }
 
 	// Use this for initialization
 	void Awake () {
@@ -32,7 +32,7 @@ public class SoundController : MonoBehaviour {
 	}
 
 	public void PlayClip(string clipName) {
-		if (Muted) {
+		if (IsMuted) {
 			return;
 		}
 		if (sources.ContainsKey (clipName)) {
@@ -48,11 +48,11 @@ public class SoundController : MonoBehaviour {
 	}
 
 	public void Mute() {
-		Muted = true;
+		IsMuted = true;
 		//Mixer.audioMixer.SetFloat("Volume", -80f);
 	}
 	public void UnMute() {
-		Muted = false;
+		IsMuted = false;
 		//Mixer.audioMixer.SetFloat("Volume", 0f);
 	}
 }

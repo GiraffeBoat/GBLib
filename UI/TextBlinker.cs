@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 namespace GBLib {
@@ -140,6 +141,7 @@ namespace GBLib {
 		private class EitherText {
 			TextMesh MeshText;
 			Text UIText;
+			TextMeshPro TextPro;
 
 			string InitialText;
 
@@ -162,33 +164,46 @@ namespace GBLib {
 					}
 					return;
 				}
+
+				TextMeshPro pro = obj.GetComponent<TextMeshPro>();
+				if (pro != null) {
+					TextPro = pro;
+					InitialText = pro.text;
+					if (!pro.richText) {
+						Debug.LogWarning("TextMeshPro for TestBlinker has rich text disabled! This WILL look dumb!");
+					}
+					return;
+				}
 				Debug.LogError("Trying to initialize text blinker on an object that has neither a Text nor TextMesh component");
 			}
 
 			public void SetText(string newText) {
 				if (MeshText) {
 					MeshText.text = newText;
-				}
-				else if (UIText) {
+				} else if (UIText) {
 					UIText.text = newText;
+				} else if (TextPro) {
+					TextPro.text = newText;
 				}
 			}
 
 			public string GetDefaultText() {
 				if (MeshText) {
 					return MeshText.text;
-				}
-				else if (UIText) {
+				} else if (UIText) {
 					return UIText.text;
+				} else if (TextPro) {
+					return TextPro.text;
 				}
 				return "";
 			}
 			public Color GetDefaultColor() {
 				if (MeshText) {
 					return MeshText.color;
-				}
-				else if (UIText) {
+				} else if (UIText) {
 					return UIText.color;
+				} else if (TextPro) {
+					return TextPro.color;
 				}
 				return Color.black;
 			}
